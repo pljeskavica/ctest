@@ -40,9 +40,9 @@ const runSolution = async ({
       const pass = result === output;
       let status = pass ? chalk.bgGreen('PASS') : chalk.bgRed('FAIL');
       process.stdout.write(
-        `${indent(
-          2
-        )}${status} Input Index: ${inputIndex} - Output: ${result} \n`
+        `${indent(2)}${status} Input Index: ${inputIndex} - Output: ${
+          output && `Expected: ${output}`
+        } Recieved: ${result} \n`
       );
     })
     .catch(console.warn);
