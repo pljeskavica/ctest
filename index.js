@@ -32,7 +32,7 @@ const validateParams = () => {
         'No directory was submitted.  Please indicate which folder you would like to test.'
       )
     );
-    process.exit(1);
+    process.exit(0);
   }
 };
 const validateFiles = (d, s) => {
@@ -42,15 +42,16 @@ const validateFiles = (d, s) => {
         'No data.json file was found in the directory specified.  Please create a data.json file to supply the input for your solution files.'
       )
     );
-    process.exit(1);
+    process.exit(0);
   }
-  if (!s.length) {
+  if (!Object.keys(s).length) {
     console.log(
       chalk.red('No solution files were found in the directory specified.')
     );
-    process.exit(1);
+    process.exit(0);
   }
 };
+
 const main = async () => {
   console.clear();
   validateParams();
