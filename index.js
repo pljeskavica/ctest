@@ -44,7 +44,7 @@ const validateFiles = (d, s) => {
     );
     process.exit(0);
   }
-  if (!Object.keys(s).length) {
+  if (!s.size) {
     console.log(
       chalk.red('No solution files were found in the directory specified.')
     );
