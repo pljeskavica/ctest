@@ -1,6 +1,8 @@
 const readline = require('readline');
 const getFileNames = require('./utilities/getFileNames');
 const runSolution = require('./utilities/runSolution');
+const getDirName = require('./utilities/getDirName');
+
 const chalk = require('chalk');
 
 const indent = (count = 1) => {
@@ -21,9 +23,39 @@ const write2 = value => {
   lineCounter += 1;
   return lineCounter;
 };
+
+const validateParams = () => {
+  const dirName = getDirName();
+  if (!dirName) {
+    console.log(
+      chalk.red(
+        'No directory was submitted.  Please indicate which folder you would like to test.'
+      )
+    );
+    process.exit(1);
+  }
+};
+const validateFiles = (d, s) => {
+  if (!d) {
+    console.log(
+      chalk.red(
+        'No data.json file was found in the directory specified.  Please create a data.json file to supply the input for your solution files.'
+      )
+    );
+    process.exit(1);
+  }
+  if (!s.length) {
+    console.log(
+      chalk.red('No solution files were found in the directory specified.')
+    );
+    process.exit(1);
+  }
+};
 const main = async () => {
   console.clear();
+  validateParams();
   const { dataFile, solutionFiles } = getFileNames();
+  validateFiles(dataFile, solutionFiles);
   const solutionData = require(dataFile);
 
   const solutionPromises = [];

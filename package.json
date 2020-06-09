@@ -6,9 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": {
+    "ctest": "./bin/ctest.js"
+  },
   "author": "Tom Hogue",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^4.0.0"
+    "chalk": "^4.0.0",
+    "import-local": "^3.0.2"
   }
 }
