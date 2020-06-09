@@ -34,7 +34,6 @@ const runSolution = async ({
   output,
   inputIndex,
 }) => {
-  // process.stdout.write(`${chalk.bgYellow('RUNNING')} `);
   const run = createRunner({ fullFilePath, command, input })
     .then(result => {
       const pass = result === output;

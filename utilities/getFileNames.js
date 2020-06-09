@@ -1,4 +1,5 @@
 const { join } = require('path');
+const getDirName = require('./getDirName');
 
 const languageFileEndings = {
   js: {
@@ -12,7 +13,7 @@ const languageFileEndings = {
 };
 
 const getFileNames = () => {
-  const [dirName] = process.argv.slice(2);
+  const dirName = getDirName();
   const normalizedPath = join(process.cwd(), dirName);
 
   let dataFile = '';
@@ -33,19 +34,6 @@ const getFileNames = () => {
         language,
         command,
       };
-
-      // {js: [{
-      //   fullFilePath,
-      //   fileName,
-      //   language,
-      //   command,
-      // }],
-      // rb: [{{
-      //   fullFilePath,
-      //   fileName,
-      //   language,
-      //   command,
-      // };}]}
 
       solutionFiles.set(language, [
         ...(solutionFiles.get(language) || []),
